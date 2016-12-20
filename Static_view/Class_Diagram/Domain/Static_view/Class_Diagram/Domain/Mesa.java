@@ -9,6 +9,16 @@ public class Mesa {
 //	private string hora;
 	private boolean atendida;
 	
+	public Mesa(int idmesa, boolean ocupada, boolean reservada, boolean atendida){
+		
+		this.idmesa = idmesa;
+		this.ocupada = ocupada;
+		this.reservada = reservada;
+		this.atendida = atendida;
+		
+		
+	}
+	
 	public void setidmesa(int idmesa){
 		
 		this.idmesa = idmesa;
