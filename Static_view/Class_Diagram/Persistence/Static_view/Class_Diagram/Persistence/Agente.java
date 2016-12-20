@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Vector;
 
@@ -94,13 +95,22 @@ public class Agente {
 		conectar();
     	PreparedStatement stmt = mBD.prepareStatement(SQL);
     	ResultSet res=stmt.executeQuery();
+    	ResultSetMetaData rsmd = res.getMetaData();
     	
-    	
+    	int c = rsmd.getColumnCount();
+
     	while(res.next()){
+    		
     		Vector<String> tupla = new Vector<String>();
-    		tupla.add(res.getString(1));
-    		tupla.add(res.getString(2));
+    		
+    		for(int i = 0; i < c; i++){
+    			
+    			tupla.add(res.getString(i+1));
+    			
+    		}
+    		
     		ret.add(tupla);
+    		
     	}
     	
     	stmt.close();

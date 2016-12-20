@@ -1,33 +1,46 @@
 package Static_view.Class_Diagram.Domain;
 
+import java.util.Vector;
+
+import Static_view.Class_Diagram.Persistence.Agente;
+
 public class Gestor_Mesas {
 
-	/**
-	 * 
-	 * @param tipo_usuario
-	 */
+
 	/*public void Estado_Mesas(int tipo_usuario) { NO SE USA
-	
-		
+			
 	}*/
 
-	public Mesa[] consultarmesas() {
+	public Mesa[] consultarmesas() throws Exception {
+				
+		String SQL_Consulta = "SELECT * FROM `mesas` WHERE `ocupada` = 'false';";
 		
-		Mesa mesas[] = new Mesa[8];
+		Agente a = Agente.getAgente();
 		
-		//SELECT BLABLABLABLA
+		Vector<Object> res = a.select(SQL_Consulta);
 		
-		//FOR BLABLABLA
+		Mesa mesas[] = new Mesa[res.size()];
 		
-		//GENERAR OBJETOS
+		for(int i=0; i<res.size(); i++){
+			
+			Vector<String> tupla = (Vector<String>) res.elementAt(i);
+			
+			System.out.println(Integer.parseInt(tupla.get(0)));
+			
+			mesas[i] = new Mesa(Integer.parseInt(tupla.get(0)),Boolean.parseBoolean(tupla.get(1)),Boolean.parseBoolean(tupla.get(2)),Boolean.parseBoolean(tupla.get(3)));	
+			
+		}
 		
 		return mesas;
 		
 	}
 
 	public boolean ocuparmesa() {
-		// TODO - implement Gestor_Mesas.ocuparmesa
-		throw new UnsupportedOperationException();
+		
+		//UPDATE SQL
+		
+		return true;
+		
 	}
 
 }

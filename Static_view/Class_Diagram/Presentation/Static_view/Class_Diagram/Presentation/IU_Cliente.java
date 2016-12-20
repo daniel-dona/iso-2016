@@ -72,14 +72,20 @@ public class IU_Cliente {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				
+				try {
+					
+					if(GR.Hacer_Reserva(dia.format(fecha.getDate()), (String) horarios.getSelectedItem())){
+
+						System.out.print("AA");
+
+
+					}
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
-				
-				//
-				
-				System.out.print(dia.format(fecha.getDate()));
-				
-				//IU.Hacer_Reserva();
-	
 			}
 			
 		});
