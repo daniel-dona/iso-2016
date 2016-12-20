@@ -33,6 +33,8 @@ public class IU_Cliente {
 
 	public void Hacer_Reserva() {
 		
+		Gestor_Reservas GR = new Gestor_Reservas();
+		
 		JFrame frame = new JFrame("Reserva con pedido");
 		
 		//Organización de los componentes
@@ -70,7 +72,7 @@ public class IU_Cliente {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				
-				//OBTENER MESAS
+				
 				
 				//
 				

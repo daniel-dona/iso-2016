@@ -3,6 +3,7 @@ package Static_view.Class_Diagram.Persistence;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
@@ -87,12 +88,28 @@ public class Agente {
     }
     
     
-	/*public Vector<Object> select(String SQL) throws SQLException,Exception{
+	public Vector<Object> select(String SQL) throws SQLException,Exception{
 
+		Vector<Object> ret = new Vector<Object>();
+		conectar();
+    	PreparedStatement stmt = mBD.prepareStatement(SQL);
+    	ResultSet res=stmt.executeQuery();
+    	
+    	
+    	while(res.next()){
+    		Vector<String> tupla = new Vector<String>();
+    		tupla.add(res.getString(1));
+    		tupla.add(res.getString(2));
+    		ret.add(tupla);
+    	}
+    	
+    	stmt.close();
+    	desconectar();
+    	
+    	return ret;
 		
 		
-		
-	}*/
+	}
 
 
 }

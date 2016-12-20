@@ -12,9 +12,9 @@ public class Gestor_Reservas {
 		throw new UnsupportedOperationException();
 	}
 
-	public void Cancelar_Reserva() {
+	/*public void Cancelar_Reserva() { NO SE USA
 		// TODO - implement Gestor_Reservas.Cancelar_Reserva
 		throw new UnsupportedOperationException();
-	}
+	}*/
 
 }
