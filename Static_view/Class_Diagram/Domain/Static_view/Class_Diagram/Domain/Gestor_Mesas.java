@@ -12,8 +12,9 @@ public class Gestor_Mesas {
 	}
 
 	public Mesa[] consultarmesas() {
-		// TODO - implement Gestor_Mesas.consultarmesas
-		throw new UnsupportedOperationException();
+		
+		
+		
 	}
 
 	public boolean ocuparmesa() {
