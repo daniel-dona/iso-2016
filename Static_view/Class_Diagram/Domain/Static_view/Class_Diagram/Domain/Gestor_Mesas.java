@@ -6,14 +6,22 @@ public class Gestor_Mesas {
 	 * 
 	 * @param tipo_usuario
 	 */
-	public void Estado_Mesas(int tipo_usuario) {
-		// TODO - implement Gestor_Mesas.Estado_Mesas
-		throw new UnsupportedOperationException();
-	}
+	/*public void Estado_Mesas(int tipo_usuario) { NO SE USA
+	
+		
+	}*/
 
 	public Mesa[] consultarmesas() {
 		
+		Mesa mesas[] = new Mesa[8];
 		
+		//SELECT BLABLABLABLA
+		
+		//FOR BLABLABLA
+		
+		//GENERAR OBJETOS
+		
+		return mesas;
 		
 	}
 

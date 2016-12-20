@@ -7,7 +7,7 @@ public class Gestor_Reservas {
 	 * @param fecha
 	 * @param hora
 	 */
-	public void Hacer_Reserva(int fecha, string hora) {
+	public void Hacer_Reserva(int fecha, String hora) {
 		// TODO - implement Gestor_Reservas.Hacer_Reserva
 		throw new UnsupportedOperationException();
 	}

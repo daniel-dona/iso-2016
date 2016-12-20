@@ -8,7 +8,7 @@ public class Gestor_Pedidos {
 	 * @param pedido
 	 * @param mesa
 	 */
-	public void Añadir_Pedido(string fecha, Pedido pedido, Mesa mesa) {
+	public void Anadir_Pedido(String fecha, Pedido pedido, Mesa mesa) {
 		// TODO - implement Gestor_Pedidos.Añadir_Pedido
 		throw new UnsupportedOperationException();
 	}
@@ -41,7 +41,7 @@ public class Gestor_Pedidos {
 	 * @param fecha
 	 * @param pedido
 	 */
-	public void Añadir_Pedido(string fecha, Pedido pedido) {
+	public void Anadir_Pedido(String fecha, Pedido pedido) {
 		// TODO - implement Gestor_Pedidos.Añadir_Pedido
 		throw new UnsupportedOperationException();
 	}
