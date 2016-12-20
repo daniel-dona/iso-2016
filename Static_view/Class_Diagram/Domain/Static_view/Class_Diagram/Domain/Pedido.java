@@ -9,87 +9,64 @@ public class Pedido {
 	private String hora;
 	private String fecha;
 	
-	public Pedido(int idpedido, int idreserva, int idmesa, String hora, String fecha, String comida){
-		
+	public Pedido(String comida, int idmesa, int idpedido, int idreserva, String hora, String fecha) {
+		this.comida = comida;
+		this.idmesa = idmesa;
 		this.idpedido = idpedido;
 		this.idreserva = idreserva;
-		this.idmesa = idmesa;
 		this.hora = hora;
 		this.fecha = fecha;
-		this.comida = comida;
-		
 	}
 	
-	public void setidpedido(int idpedido){
-		
+	
+	public String getComida() {
+		return comida;
+	}
+
+	public int getIdmesa() {
+		return idmesa;
+	}
+
+	public int getIdpedido() {
+		return idpedido;
+	}
+
+	public int getIdreserva() {
+		return idreserva;
+	}
+
+	public String getHora() {
+		return hora;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setComida(String comida) {
+		this.comida = comida;
+	}
+
+	public void setIdmesa(int idmesa) {
+		this.idmesa = idmesa;
+	}
+
+	public void setIdpedido(int idpedido) {
 		this.idpedido = idpedido;
-		
 	}
-	
-	public void setidreserva(int idreserva){
-		
+
+	public void setIdreserva(int idreserva) {
 		this.idreserva = idreserva;
-	
 	}
 
-	public void setidmesa(int idmesa){
-		
-		this.idmesa = idmesa;
-		
-	}
-	
-	public void sethora(String hora){
-		
+	public void setHora(String hora) {
 		this.hora = hora;
-		
-	}
-	
-	public void setfecha(String fecha){
-		
-		this.fecha = fecha;
-	
-	}
-	
-	public void setcomida(String comida){
-		
-		this.comida = comida;
-		
-	}
-	
-	public int getidpedido(){
-		
-		return this.idpedido;
-		
-	}
-	
-	public int getidreserva(){
-		
-		return this.idreserva;
-	
-	}
-	
-	public int getidmesa(){
-		
-		return this.idmesa;
-		
-	}
-	
-	public String gethora(){
-		
-		return this.hora;
-		
-	}
-	
-	public String getfecha(){
-		
-		return this.fecha;
-		
-	}
-	
-	public String getcomida(){
-		
-		return this.comida;
-		
 	}
 
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+
+	
 }
