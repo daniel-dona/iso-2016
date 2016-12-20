@@ -11,7 +11,7 @@ public class Gestor_Mesas {
 		throw new UnsupportedOperationException();
 	}
 
-	public Mesa2[] consultarmesas() {
+	public Mesa[] consultarmesas() {
 		// TODO - implement Gestor_Mesas.consultarmesas
 		throw new UnsupportedOperationException();
 	}
