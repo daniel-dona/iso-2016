@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
 import Static_view.Class_Diagram.Domain.*;
@@ -176,8 +177,7 @@ public class IU_Cliente {
 		
 		
 		//Organización de los componentes
-		GridLayout contenido = new GridLayout(0,3,50,50);
-
+		GridLayout contenido = new GridLayout(0,3,20,20);
 		//Tamaño de la ventana
 		frame.setMaximumSize(new Dimension(400,500));
 		//Panel de contenido
@@ -201,6 +201,12 @@ public class IU_Cliente {
 		frame.add(t_pedido);
 		frame.add(b_pedido);
 		
+		JTextPane textPaneEstado = new JTextPane();
+		textPaneEstado.setEditable(false);	
+		
+		contentPanel.add(textPaneEstado);
+		
+
 		b_pedido.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
@@ -217,6 +223,8 @@ public class IU_Cliente {
 				try {
 			
 					GP.Anadir_Pedido(wr.getFecha(), p, wm);
+					
+					textPaneEstado.setText("Pedido: "+idpedido);
 			
 				} catch (Exception e) {
 
@@ -241,23 +249,72 @@ public class IU_Cliente {
 		
 		JFrame frame_m = new JFrame();
 		
-		JDialog frame = new JDialog(frame_m, "Cambiar pedido");
+		JDialog frame = new JDialog(frame_m, "Hacer pedido");
 		
 		
 		
 		//Organización de los componentes
-		GridLayout contenido = new GridLayout(2,1,50,50);
-		frame.setLayout(contenido);
+		GridLayout contenido = new GridLayout(0,3,20,20);
+
 		//Tamaño de la ventana
 		frame.setMaximumSize(new Dimension(400,500));
 		//Panel de contenido
 		JPanel contentPanel = new JPanel();
 		//Margen al borde
 		contentPanel.setBorder(new EmptyBorder(50, 100, 50, 100));
+		contentPanel.setLayout(contenido);
 		frame.setContentPane(contentPanel);
 		//Operación al cerrar la ventana
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		//Botones
+		
+		JLabel l_ipedido = new JLabel("ID Pedido: ");
+		
+		JTextField t_ipedido = new JTextField();
+		t_ipedido.setColumns(10);
+		
+		JButton b_ipedido = new JButton("Comprobar");
+		
+		JLabel l_pedido = new JLabel("Comida: ");
+		
+		JTextField t_pedido = new JTextField();
+		t_pedido.setColumns(10);
+		
+		JButton b_pedido = new JButton("Cambiar");
+		frame.add(l_ipedido);
+		frame.add(t_ipedido);
+		frame.add(b_ipedido);
+		frame.add(l_pedido);
+		frame.add(t_pedido);
+		frame.add(b_pedido);
+		
+		b_pedido.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				String comida = t_pedido.getText();
+				String pedido = t_ipedido.getText();
+				
+				//int idpedido = 1000 + (int)(Math.random() * 9999);
+				
+				
+				Pedido p = new Pedido();
+				p.setComida(comida);
+				p.setIdpedido(Integer.parseInt(pedido));
+				
+				try {
+			
+					GP.Modificar_Pedido(p);
+			
+				} catch (Exception e) {
+
+					e.printStackTrace();
+				}
+				
+		
+			}
+		});
 		
 		//Posición en el escritorio
 		frame.setLocationRelativeTo(null);
@@ -265,6 +322,8 @@ public class IU_Cliente {
 		frame.pack();
 		frame.setModal(true);
 		frame.setVisible(true);
+		
 	}
+	
 
 }

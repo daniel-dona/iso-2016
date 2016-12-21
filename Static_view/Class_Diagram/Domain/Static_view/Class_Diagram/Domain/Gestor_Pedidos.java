@@ -31,15 +31,13 @@ public class Gestor_Pedidos {
 		
 		int idpedido = Pedido_Modificar.getIdpedido();
 		
-		int idmesa = Pedido_Modificar.getIdmesa();
+
 		
 		String comida = Pedido_Modificar.getComida();
 		
-		String fecha = Pedido_Modificar.getFecha();
+
 		
-		String hora = Pedido_Modificar.getHora();
-		
-		String SQL_Consulta = "UPDATE `pedidos` SET `idmesa`='"+idmesa+"', `comida`='"+comida+"', `fecha`='"+fecha+"', `fecha`='"+hora+"' WHERE `idpedido`='"+idpedido+"';";
+		String SQL_Consulta = "UPDATE `pedidos` SET  `comida`='"+comida+"' WHERE `idpedido`='"+idpedido+"';";
 		
 		Agente a = Agente.getAgente();
 		
