@@ -7,14 +7,19 @@ import Static_view.Class_Diagram.Persistence.Agente;
 public class Gestor_Reservas {
 
 
-	public int[] Hacer_Reserva(String fecha, String hora) throws Exception {
+	public Vector<Object> Hacer_Reserva(String fecha, String hora) throws Exception {
 		
 		int idreserva = 0;
 		
 		int idmesa_reserva = 0;
 
+		Reserva reser = new Reserva();
+		
+		Mesa m_obj = new Mesa();
 		
 		int ret[] = new int[2];
+		
+		Vector<Object> ret_f = new Vector<Object>();
 		
 		Gestor_Mesas GM = new Gestor_Mesas();
 			
@@ -56,6 +61,8 @@ public class Gestor_Reservas {
 					
 					idmesa_reserva = mesas[m].getIdmesa();
 					
+					m_obj = mesas[m];
+					
 					break;
 					
 				}
@@ -66,13 +73,19 @@ public class Gestor_Reservas {
 				
 				System.out.println("Debug: no hay mesas disponibles ese día y hora");
 				
-				return ret;
+				ret_f.add(ret);
+				
+				return ret_f;
 				
 			}else{
 				
 				System.out.println("Debug: insertar reserva en DB");
 				
-				idreserva = 1000 + (int)(Math.random() * 9999); 
+				idreserva = 1000 + (int)(Math.random() * 9999);
+				
+				reser = new Reserva(fecha, hora, idmesa_reserva, idreserva);
+				
+				
 				
 				String SQL_Consulta_IN = "INSERT INTO `practicabd`.`reservas` (`idreserva`, `idmesa`, `fecha`, `hora`) VALUES ('"+idreserva+"', '"+idmesa_reserva+"', '"+fecha+"', '"+hora+"');";
 								
@@ -87,7 +100,12 @@ public class Gestor_Reservas {
 		ret[0] = idreserva;
 		ret[1] = idmesa_reserva;
 		
-		return ret;
+		
+		ret_f.add(ret);
+		ret_f.add(reser);
+		ret_f.add(m_obj);
+		
+		return ret_f;
 		
 	}
 

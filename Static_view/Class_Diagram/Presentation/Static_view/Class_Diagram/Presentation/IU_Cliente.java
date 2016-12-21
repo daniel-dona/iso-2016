@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Vector;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -15,11 +17,11 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import Static_view.Class_Diagram.Domain.Gestor_Mesas;
-import Static_view.Class_Diagram.Domain.Gestor_Pedidos;
-import Static_view.Class_Diagram.Domain.Gestor_Reservas;
+import Static_view.Class_Diagram.Domain.*;
+
 
 import org.jdesktop.swingx.JXDatePicker;
 
@@ -31,9 +33,16 @@ public class IU_Cliente {
     SimpleDateFormat dia = new SimpleDateFormat ("dd/MM/yyyy");
    // SimpleDateFormat hora = new SimpleDateFormat ("hh:mm:ss");
     
-    public int idreserva = 0;
-    public int idpedido = 0;
-    public int idmesa = 0;
+    
+    //Entorno de trabajo
+    int idreserva = 0;
+    int idpedido = 0;
+    int idmesa = 0;
+    
+    Reserva wr = new Reserva();
+    Mesa wm = new Mesa();
+    Pedido wp = new Pedido();
+    
 
 	public int Hacer_Reserva() {
 	
@@ -84,9 +93,15 @@ public class IU_Cliente {
 				
 				try {
 					
-					int ret_res[] = new int[2];
+					Vector<Object> ret_f;
 					
-					ret_res = GR.Hacer_Reserva(dia.format(fecha.getDate()), (String) horarios.getSelectedItem());
+					ret_f = GR.Hacer_Reserva(dia.format(fecha.getDate()), (String) horarios.getSelectedItem());
+					
+					int ret_res[] = (int[]) ret_f.get(0);
+					
+					wr = (Reserva) ret_f.get(1);
+					
+					wm = (Mesa) ret_f.get(2);
 					
 					idreserva = ret_res[0];
 					
@@ -161,18 +176,54 @@ public class IU_Cliente {
 		
 		
 		//Organización de los componentes
-		GridLayout contenido = new GridLayout(2,1,50,50);
-		frame.setLayout(contenido);
+		GridLayout contenido = new GridLayout(0,3,50,50);
+
 		//Tamaño de la ventana
 		frame.setMaximumSize(new Dimension(400,500));
 		//Panel de contenido
 		JPanel contentPanel = new JPanel();
 		//Margen al borde
 		contentPanel.setBorder(new EmptyBorder(50, 100, 50, 100));
+		contentPanel.setLayout(contenido);
 		frame.setContentPane(contentPanel);
 		//Operación al cerrar la ventana
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		//Botones
+		
+		JLabel l_pedido = new JLabel("Comida: ");
+		
+		JTextField t_pedido = new JTextField();
+		t_pedido.setColumns(10);
+		
+		JButton b_pedido = new JButton("Pedir");
+		
+		frame.add(l_pedido);
+		frame.add(t_pedido);
+		frame.add(b_pedido);
+		
+		b_pedido.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				String comida = t_pedido.getText();
+				
+				int idpedido = 1000 + (int)(Math.random() * 9999);
+				
+				Pedido p = new Pedido(comida, wr.getIdmesa(), idpedido, wr.getIdreserva(), wr.getFecha(), wr.getHora());
+				
+				try {
+			
+					GP.Anadir_Pedido(wr.getFecha(), p, wm);
+			
+				} catch (Exception e) {
+
+					e.printStackTrace();
+				}
+				
+		
+			}
+		});
 		
 		//Posición en el escritorio
 		frame.setLocationRelativeTo(null);

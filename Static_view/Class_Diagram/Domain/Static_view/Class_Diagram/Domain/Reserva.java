@@ -5,8 +5,17 @@ public class Reserva {
 	private String fecha;
 	private String hora;
 	private int idmesa;
+	private int idreserva;
 	
-	public Reserva(String fecha, String hora, int idmesa) {
+	public int getIdreserva() {
+		return idreserva;
+	}
+
+	public void setIdreserva(int idreserva) {
+		this.idreserva = idreserva;
+	}
+
+	public Reserva(String fecha, String hora, int idmesa, int idreserva) {
 		
 		this.fecha = fecha;
 		this.hora = hora;
@@ -31,6 +40,9 @@ public class Reserva {
 	}
 	public void setIdmesa(int idmesa) {
 		this.idmesa = idmesa;
+	}
+
+	public Reserva() {
 	}
 
 }

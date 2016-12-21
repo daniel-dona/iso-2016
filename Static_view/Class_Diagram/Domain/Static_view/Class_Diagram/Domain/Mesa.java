@@ -38,6 +38,8 @@ public class Mesa {
 		this.reservada = reservada;
 		this.atendida = atendida;
 	}
+	public Mesa() {
+	}
 	
 
 	
