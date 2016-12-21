@@ -11,6 +11,7 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,12 +31,21 @@ public class IU_Cliente {
     SimpleDateFormat dia = new SimpleDateFormat ("dd/MM/yyyy");
    // SimpleDateFormat hora = new SimpleDateFormat ("hh:mm:ss");
     
+    public int idreserva = 0;
+    public int idpedido = 0;
+    public int idmesa = 0;
 
-	public void Hacer_Reserva() {
+	public int Hacer_Reserva() {
+	
+		
 		
 		Gestor_Reservas GR = new Gestor_Reservas();
 		
-		JFrame frame = new JFrame("Reserva con pedido");
+		JFrame frame_m = new JFrame();
+		
+		JDialog frame = new JDialog(frame_m, "Reserva con pedido");
+		
+		
 		
 		//Organización de los componentes
 		GridLayout contenido = new GridLayout(2,1,50,50);
@@ -74,14 +84,52 @@ public class IU_Cliente {
 				
 				try {
 					
-					if(GR.Hacer_Reserva(dia.format(fecha.getDate()), (String) horarios.getSelectedItem())){
+					int ret_res[] = new int[2];
+					
+					ret_res = GR.Hacer_Reserva(dia.format(fecha.getDate()), (String) horarios.getSelectedItem());
+					
+					idreserva = ret_res[0];
+					
+					idmesa = ret_res[1];
+					
+					if(idreserva > 0){
 
-						System.out.print("AA");
+						System.out.println("Debug: Reserva registrada!");
+						
+						frame.dispose();
 
-
+					}else{
+						
+						JFrame frame = new JFrame("Error");
+						
+						//Organización de los componentes
+						GridLayout contenido = new GridLayout(2,1,50,50);
+						frame.setLayout(contenido);
+						//Tamaño de la ventana
+						frame.setMaximumSize(new Dimension(400,500));
+						//Panel de contenido
+						JPanel contentPanel = new JPanel();
+						//Margen al borde
+						contentPanel.setBorder(new EmptyBorder(50, 100, 50, 100));
+						frame.setContentPane(contentPanel);
+						//Operación al cerrar la ventana
+						frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						//Botones
+						JLabel emptyLabel = new JLabel("No hay mesas disponibles");
+				        emptyLabel.setPreferredSize(new Dimension(175, 100));
+				        frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
+						
+						frame.setLocationRelativeTo(null);
+						
+						frame.pack();
+						frame.setVisible(true);
+						
 					}
 					
 				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (Throwable e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -95,18 +143,75 @@ public class IU_Cliente {
 		frame.setLocationRelativeTo(null);
 		
 		frame.pack();
+		frame.setModal(true);
 		frame.setVisible(true);
+		
+		return idreserva;
 
 	}
 
 	public void Hacer_Pedido() {
-		// TODO - implement IU_Cliente.Hacer_Pedido
-		throw new UnsupportedOperationException();
+		
+		Gestor_Pedidos GP = new Gestor_Pedidos();
+		
+		JFrame frame_m = new JFrame();
+		
+		JDialog frame = new JDialog(frame_m, "Hacer pedido");
+		
+		
+		
+		//Organización de los componentes
+		GridLayout contenido = new GridLayout(2,1,50,50);
+		frame.setLayout(contenido);
+		//Tamaño de la ventana
+		frame.setMaximumSize(new Dimension(400,500));
+		//Panel de contenido
+		JPanel contentPanel = new JPanel();
+		//Margen al borde
+		contentPanel.setBorder(new EmptyBorder(50, 100, 50, 100));
+		frame.setContentPane(contentPanel);
+		//Operación al cerrar la ventana
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		//Botones
+		
+		//Posición en el escritorio
+		frame.setLocationRelativeTo(null);
+		
+		frame.pack();
+		frame.setModal(true);
+		frame.setVisible(true);
+		
 	}
 
 	public void Cambiar_Pedido() {
-		// TODO - implement IU_Cliente.Cambiar_Pedido
-		throw new UnsupportedOperationException();
+		Gestor_Pedidos GP = new Gestor_Pedidos();
+		
+		JFrame frame_m = new JFrame();
+		
+		JDialog frame = new JDialog(frame_m, "Cambiar pedido");
+		
+		
+		
+		//Organización de los componentes
+		GridLayout contenido = new GridLayout(2,1,50,50);
+		frame.setLayout(contenido);
+		//Tamaño de la ventana
+		frame.setMaximumSize(new Dimension(400,500));
+		//Panel de contenido
+		JPanel contentPanel = new JPanel();
+		//Margen al borde
+		contentPanel.setBorder(new EmptyBorder(50, 100, 50, 100));
+		frame.setContentPane(contentPanel);
+		//Operación al cerrar la ventana
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		//Botones
+		
+		//Posición en el escritorio
+		frame.setLocationRelativeTo(null);
+		
+		frame.pack();
+		frame.setModal(true);
+		frame.setVisible(true);
 	}
 
 }

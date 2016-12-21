@@ -17,7 +17,7 @@ import Static_view.*;
 import Static_view.Class_Diagram.Presentation.IU_Cliente;
 import javafx.scene.layout.Border;
 
-class P3{
+public class Pomodoro{
 	
 	public static void main(String[] args) {
 		
@@ -50,9 +50,17 @@ class P3{
 			
 			public void actionPerformed(ActionEvent arg0) {
 				
-				System.out.print("Reserva()");
+				System.out.println("Debug: diálogo reserva...");
 				
-				IU.Hacer_Reserva();
+				if(IU.Hacer_Reserva() != 0){
+				
+					System.out.println("Debug: diálogo pedido...");
+					
+					IU.Hacer_Pedido();
+				
+				}
+				
+				System.out.println("Debug: ventana principal");
 	
 			}
 			
@@ -62,9 +70,11 @@ class P3{
 			
 			public void actionPerformed(ActionEvent arg0) {
 				
-				System.out.print("Cambiar()");
+				System.out.println("Debug: diálogo cambiar pedido...");
 				
-				//IU.Cambiar_Pedido();
+				IU.Cambiar_Pedido();
+				
+				System.out.println("Debug: ventana principal");
 	
 			}
 			

@@ -13,7 +13,7 @@ public class Gestor_Mesas {
 
 	public Mesa[] consultarmesas() throws Exception {
 				
-		String SQL_Consulta = "SELECT * FROM `mesas` WHERE `ocupada` = 'false';";
+		String SQL_Consulta = "SELECT * FROM `mesas`;";
 		
 		Agente a = Agente.getAgente();
 		
@@ -35,9 +35,13 @@ public class Gestor_Mesas {
 		
 	}
 
-	public boolean ocuparmesa() {
+	public boolean ocuparmesa(int idmesa) throws Exception {
 		
-		//UPDATE SQL
+		String SQL_Consulta = "UPDATE `mesas` SET `ocupada`='true' WHERE `idmesa`='"+idmesa+"';";
+		
+		Agente a = Agente.getAgente();
+		
+		a.update(SQL_Consulta);
 		
 		return true;
 		
