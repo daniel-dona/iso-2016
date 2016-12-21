@@ -20,7 +20,7 @@ public class Reserva {
 		this.fecha = fecha;
 		this.hora = hora;
 		this.idmesa = idmesa;
-		
+		this.idreserva = idreserva;
 	}
 	
 	public String getFecha() {

@@ -19,8 +19,8 @@ public class Gestor_Pedidos {
 		
 		String hora = pedido.getHora();
 		
-		String SQL_Consulta = "INSERT INTO `practicabd`.`pedidos` (`idpedido`, `idreserva`, `idmesa`, `comida`, `fecha`, `hora`) VALUES ('"+idpedido+"', '"+idreserva+"', '"+idmesa+"', '"+comida+"', '"+fecha+"', '"+hora+"');";
-		
+		String SQL_Consulta = "INSERT INTO `practicabd`.`pedidos` (`idpedido`, `idreserva`, `idmesa`, `comida`, `fecha`, `hora`) VALUES ('"+idpedido+"', '"+idreserva+"', '"+idmesa+"', '"+comida+"', '"+fecha_p+"', '"+hora+"');";
+				
 		Agente a = Agente.getAgente();
 		
 		a.insert(SQL_Consulta);

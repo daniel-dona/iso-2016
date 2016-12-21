@@ -43,6 +43,9 @@ public class Agente {
     public boolean insert(String SQL) throws SQLException, Exception{ 
      	conectar();
     	PreparedStatement stmt = mBD.prepareStatement(SQL);
+    	
+		System.out.println("Debug: [SQL] "+SQL);
+
     	int res=stmt.executeUpdate();
     	stmt.close();
     	desconectar();
@@ -58,6 +61,9 @@ public class Agente {
     
     public boolean delete(String SQL) throws SQLException,Exception{
     	PreparedStatement stmt = mBD.prepareStatement(SQL);
+    	
+    	System.out.println("Debug: [SQL] "+SQL);
+    	
     	int res=stmt.executeUpdate();
     	stmt.close();
     	desconectar();
@@ -75,6 +81,9 @@ public class Agente {
     public boolean update(String SQL) throws SQLException,Exception{
     	conectar();
     	PreparedStatement stmt = mBD.prepareStatement(SQL);
+    	
+    	System.out.println("Debug: [SQL] "+SQL);
+    	
     	int res=stmt.executeUpdate();
     	stmt.close();
     	desconectar();
@@ -94,6 +103,9 @@ public class Agente {
 		Vector<Object> ret = new Vector<Object>();
 		conectar();
     	PreparedStatement stmt = mBD.prepareStatement(SQL);
+    	
+    	System.out.println("Debug: [SQL] "+SQL);
+    	
     	ResultSet res=stmt.executeQuery();
     	ResultSetMetaData rsmd = res.getMetaData();
     	

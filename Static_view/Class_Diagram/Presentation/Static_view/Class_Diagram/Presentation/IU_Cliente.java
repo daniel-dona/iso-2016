@@ -210,6 +210,8 @@ public class IU_Cliente {
 				
 				int idpedido = 1000 + (int)(Math.random() * 9999);
 				
+				System.out.println(wr.getIdreserva());
+				
 				Pedido p = new Pedido(comida, wr.getIdmesa(), idpedido, wr.getIdreserva(), wr.getFecha(), wr.getHora());
 				
 				try {
